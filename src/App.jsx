@@ -1,12 +1,12 @@
 import {Outlet} from 'react-router-dom'; 
-import Nav from './components/Nav'; 
+import Header from './components/Header';
 import Footer from './components/Footer';
 
 export default function App() {
 
   return (
     <>
-      <Nav />
+      <Header />
       <main className="mx-3">
         <Outlet />
       </main>
