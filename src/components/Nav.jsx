@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Nav(){
-    // Retrieves the current page location pathname using useLocation() hook
+    //Retrieves the current page location pathname using useLocation() hook
     const currentPg = useLocation().pathname;
 
     return (
@@ -20,8 +20,8 @@ export default function Nav(){
             to="/portfolio"
             // If the current page is 'portfolio' gives, the link the actives class
             className={currentPg === '/portfolio' ?  'nav-link active' : 'nav-link'}>
-            </Link>
             Portfolio
+            </Link>
         </li>
         <li className='nav-item'>
             <Link

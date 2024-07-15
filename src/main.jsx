@@ -3,35 +3,37 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import App from './App.jsx';
-import AboutMe from './pages/AboutMe.jsx';
-import Contact from './pages/Contact.jsx';
-import Portfolio from './pages/Portfolio.jsx';
-import Resume from './pages/Resume.jsx';
-import Error from './pages/Error.jsx';
+import App from './App';
+import AboutMe from './pages/AboutMe';
+import Contact from './pages/Contact';
+import Portfolio from './pages/Portfolio';
+import Resume from './pages/Resume';
+import Error from './pages/Error';
 
-
+// Defines the routes to wich the components will render
 const router = createBrowserRouter([
   {
+    // Renders the App component with the pages as it's childrens
     path:'/',
-    Element:<App />,
-    errorElement:<Error />,
+    element: <App />,
+    errorElement: <Error />,
     children:[
       {
+        // Sets the About me page as the index
         index:true,
-        element:<AboutMe />,
+        element: <AboutMe />,
       },
       {
         path:'/contact',
-        element:<Contact />,
+        element: <Contact />,
       },
       {
         path:'/portfolio',
-        element:<Portfolio />,
+        element: <Portfolio />,
       },
       {
         path:'/resume',
-        element:<Resume />,
+        element: <Resume />,
       },
     ],
   },
