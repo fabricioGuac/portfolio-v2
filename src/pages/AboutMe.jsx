@@ -1,5 +1,11 @@
 export default function AboutMe() {
     return (
-        <h1>Fun fact about me: idk</h1>
+        <>
+        <div className="container">
+        <img src="src/assets/logo.png" alt="photo of me" className="rounded-circle img-fluid" />
+        </div>
+        <h2>About me</h2>
+        <p>Greetings! I'm Fabricio Guacuto, a passionate individual. I pride myself on being a responsible, disciplined, and goal-oriented individual, constantly seeking opportunities to expand my skill set and refine existing talents. With an unwavering commitment to personal and professional development, I eagerly anticipate the chance to learn, grow, and make meaningful contributions. Welcome to my portfolio.</p>
+        </>
     )
 }
