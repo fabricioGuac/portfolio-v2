@@ -6,6 +6,8 @@ export default function Contact() {
     let [name, setName] = useState('');
     let [email, setEmail] = useState('');
     let [message, setMessage] = useState('');
+    let [validEmail, setValidEmail] = useState(true);
+    let [fullForm, setFullForm] = useState({full: true, target:""});
 
     // Function to handle the change on the form inputs
     const handleInputChange = (e) => {
@@ -19,6 +21,7 @@ export default function Contact() {
                 break;
             case 'email':
                 setEmail(value);
+                setValidEmail(true);
                 break;
             case 'message':
                 setMessage(value);
@@ -29,27 +32,45 @@ export default function Contact() {
         }
     }
 
+    // Function to handle when the cursor leaves one of the form fields
+    const blurHandler = (e) => {
+
+        // Deconstructs the event target to get the id and value from the input field
+        const {id, value} = e.target;
+
+        // Toogles the full boolean if there is a value or not and sets the target to the id
+        setFullForm({full:value, target:id});
+
+        // Leverages regex to ensure the email is valid
+        if(id === 'email') {
+            setValidEmail(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(value))}
+    }
+
     const handleSubmit = (e) => {
-        
+        e.preventDefault();
+        console.log('I DO NOT WORKK');
     }
 
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className='form-group'>
                 <label htmlFor="name" >Name</label>
-                <input type="text" value={name}  onChange={handleInputChange} className='form-control' id='name' />
+                <input type="text" value={name}  onChange={handleInputChange} onBlur={blurHandler} className='form-control' id='name' />
             </div>
 
             <div className='form-group'>
                 <label htmlFor="email" >Email address</label>
-                <input type="text" value={email} onChange={handleInputChange} className='form-control' id='email' />
+                <input type="text" value={email} onChange={handleInputChange} onBlur={blurHandler} className='form-control' id='email' />
             </div>
 
             <div className='form-group'>
                 <label htmlFor="message">Message</label>
-                <textarea className="form-control" value={message} onChange={handleInputChange} id="message"  rows="4"></textarea>
+                <textarea className="form-control" value={message} onChange={handleInputChange} onBlur={blurHandler} id="message"  rows="4"></textarea>
             </div>
+
+            {validEmail ? "" : <h3 className='text-danger'>Invalid email</h3>}
+            {fullForm.full ? '' : <h3 className='text-danger'>Form must contain {fullForm.target}</h3>}
 
             <div className="form-group mt-2">
                     <button className="btn btn-success" type="submit" >Submit</button>
