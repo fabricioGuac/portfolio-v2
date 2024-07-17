@@ -9,9 +9,24 @@ export default function Contact() {
 
     // Function to handle the change on the form inputs
     const handleInputChange = (e) => {
-        setEmail(e.target.value);
-        setName(e.target.value);
-        setMessage(e.target.value);
+        // Deconstructs the event target to get the id and value from the input field
+        const {id, value} = e.target;
+
+        // Utilizes a switch statement to change the value of the targeted input element
+        switch(id) {
+            case 'name':
+                setName(value);
+                break;
+            case 'email':
+                setEmail(value);
+                break;
+            case 'message':
+                setMessage(value);
+                break;
+            default:
+                console.warn('Unexpected input id:', id);
+                break;
+        }
     }
 
     const handleSubmit = (e) => {
@@ -22,18 +37,18 @@ export default function Contact() {
     return (
         <form>
             <div className='form-group'>
-                <label for="name" >Name</label>
-                <input type="text" value={name}  onChange={handleInputChange} className='form-control' id='name'/>
+                <label htmlFor="name" >Name</label>
+                <input type="text" value={name}  onChange={handleInputChange} className='form-control' id='name' />
             </div>
 
             <div className='form-group'>
-                <label for="email" >Email address</label>
-                <input type="text" value={email} onChange={handleInputChange} className='form-control' id='email'/>
+                <label htmlFor="email" >Email address</label>
+                <input type="text" value={email} onChange={handleInputChange} className='form-control' id='email' />
             </div>
 
             <div className='form-group'>
-                <label for="message">Message</label>
-                <textarea className="form-control" value={message} onChange={handleInputChange} id="message" rows="4"></textarea>
+                <label htmlFor="message">Message</label>
+                <textarea className="form-control" value={message} onChange={handleInputChange} id="message"  rows="4"></textarea>
             </div>
 
             <div className="form-group mt-2">
