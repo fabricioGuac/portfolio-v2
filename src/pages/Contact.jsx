@@ -53,6 +53,8 @@ export default function Contact() {
 
 
     return (
+        <>
+        <h2>Contact</h2>
         <form onSubmit={handleSubmit}>
             <div className='form-group'>
                 <label htmlFor="name" >Name</label>
@@ -76,5 +78,6 @@ export default function Contact() {
                     <button className="btn btn-success" type="submit" >Submit</button>
                 </div>
         </form>
+        </>
     )
 }
