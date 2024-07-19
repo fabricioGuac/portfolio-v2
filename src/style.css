@@ -1,0 +1,69 @@
+
+h1{
+    font-size: 3.2em;
+    margin-top: auto;
+}
+
+ul{
+    font-size: 2em;
+}
+
+a:not(.nav-link) {
+    color: black;
+    text-decoration: none;
+}
+
+a:not(.nav-link):hover {
+    color: #242222;
+    text-decoration: underline;
+}
+
+
+img{
+    width: 700px; 
+    height: 200px; 
+    object-fit: cover;
+    object-position: center;
+}
+
+p{
+    font-size: larger;
+}
+
+label{
+    font-size: 2em;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    padding: 3em;
+    background-color: rgba(255, 51, 0, 0.575);
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.nav-link {
+    color: #685e5e;
+    text-decoration: none;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #242222;
+}
+
+.nav-link:hover{
+    color: #242222;
+}
+
+.profile{
+    width: 300px; 
+    height: 300px; 
+    object-fit: cover;
+    object-position: center;
+}

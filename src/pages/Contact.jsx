@@ -55,19 +55,20 @@ export default function Contact() {
     return (
         <>
         <h2>Contact</h2>
-        <form onSubmit={handleSubmit}>
+        <div className='row'>
+        <form className='col-md-6' onSubmit={handleSubmit}>
             <div className='form-group'>
-                <label htmlFor="name" >Name</label>
+                <label htmlFor="name" >Name:</label>
                 <input type="text" value={name}  onChange={handleInputChange} onBlur={blurHandler} className='form-control' id='name' />
             </div>
 
             <div className='form-group'>
-                <label htmlFor="email" >Email address</label>
+                <label htmlFor="email" >Email address:</label>
                 <input type="text" value={email} onChange={handleInputChange} onBlur={blurHandler} className='form-control' id='email' />
             </div>
 
             <div className='form-group'>
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">Message:</label>
                 <textarea className="form-control" value={message} onChange={handleInputChange} onBlur={blurHandler} id="message"  rows="4"></textarea>
             </div>
 
@@ -78,6 +79,7 @@ export default function Contact() {
                     <button className="btn btn-success" type="submit" >Submit</button>
                 </div>
         </form>
+        </div>
         </>
     )
 }

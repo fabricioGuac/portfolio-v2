@@ -5,7 +5,7 @@ export default function Nav(){
     const currentPg = useLocation().pathname;
 
     return (
-        <ul className='nav nav-tabs'>
+        <ul className='nav'>
         <li className='nav-item'>
             <Link 
             to="/"
