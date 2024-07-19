@@ -3,11 +3,11 @@ import {useState} from 'react';
 export default function Contact() {
 
     // Sets state variables for the form inputs
-    let [name, setName] = useState('');
-    let [email, setEmail] = useState('');
-    let [message, setMessage] = useState('');
-    let [validEmail, setValidEmail] = useState(true);
-    let [fullForm, setFullForm] = useState({full: true, target:""});
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [validEmail, setValidEmail] = useState(true);
+    const [fullForm, setFullForm] = useState({full: true, target:""});
 
     // Function to handle the change on the form inputs
     const handleInputChange = (e) => {
