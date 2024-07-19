@@ -5,7 +5,7 @@ export default function Project(props){
     return (
     <div className="col-md-6">
 
-        <img src={props.img} alt={props.name} />
+        <img src={props.img} alt={props.name} className="img-fluid" />
         <a href={props.link} target="_blank"><h3>{props.name}</h3></a>
         <a href={props.repo} target="_blank"><FaGithub className="display-3"/></a>
 
