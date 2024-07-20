@@ -76,7 +76,7 @@ export default function Contact() {
             {fullForm.full ? '' : <h3 className='text-danger'>Form must contain {fullForm.target}</h3>}
 
             <div className="form-group mt-2">
-                    <button className="btn btn-success" type="submit" >Submit</button>
+                    <button className="btn btn-secondary" type="submit" >Submit</button>
                 </div>
         </form>
         </div>

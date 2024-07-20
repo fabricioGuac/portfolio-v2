@@ -15,7 +15,7 @@ In order to use this project navigate to the deployed app section of the README,
 
 ## Screenshot displaying the deployed app
 
-![Portfolio](./assets/)
+![Portfolio](./public/)
 
 ## URL to the deployed app
 

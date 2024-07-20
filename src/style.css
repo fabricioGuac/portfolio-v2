@@ -1,3 +1,8 @@
+*{
+    font-family:cursive;
+    background-color: #000;
+    
+}
 
 h1{
     font-size: 3.2em;
@@ -9,12 +14,12 @@ ul{
 }
 
 a:not(.nav-link) {
-    color: black;
+    color: gray;
     text-decoration: none;
 }
 
 a:not(.nav-link):hover {
-    color: #242222;
+    color: gold;
     text-decoration: underline;
 }
 
@@ -34,11 +39,17 @@ label{
     font-size: 2em;
 }
 
+
+.btn:hover{
+background-color: gold;
+color: #000;
+}
+
 .head{
     display: flex;
     justify-content: space-between;
     padding: 3em;
-    background-color: rgba(255, 51, 0, 0.575);
+    border: 2px solid gold ;
 }
 
 .nav {
@@ -54,11 +65,11 @@ label{
 
 .nav-link.active {
     font-weight: bold;
-    color: #242222;
+    color: gold;
 }
 
 .nav-link:hover{
-    color: #242222;
+    color: gold;
 }
 
 .profile{
