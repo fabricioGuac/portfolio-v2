@@ -1,5 +1,6 @@
+
 body{
-    font-family:cursive;
+    font-family: "Nunito Sans", sans-serif;
     background: linear-gradient(to bottom, #000000 0%, #333333 30%, #666666 50%, #333333 70%, #000000 100%);
 } 
 
@@ -86,6 +87,13 @@ color: #000;
     height: 300px; 
     object-fit: cover;
     object-position: center;
+}
+
+.icons{
+    max-width: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 #root{
