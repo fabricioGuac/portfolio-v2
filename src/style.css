@@ -1,11 +1,15 @@
-*{
+body{
     font-family:cursive;
-    background-color: #000;
-    
-}
+    background: linear-gradient(to bottom, #000000 0%, #333333 30%, #666666 50%, #333333 70%, #000000 100%);
+} 
 
 h1{
     font-size: 3.2em;
+    margin-top: auto;
+}
+
+h2{
+    font-size: 2.5em;
     margin-top: auto;
 }
 
@@ -14,7 +18,7 @@ ul{
 }
 
 a:not(.nav-link) {
-    color: gray;
+    color: white;
     text-decoration: none;
 }
 
@@ -23,27 +27,32 @@ a:not(.nav-link):hover {
     text-decoration: underline;
 }
 
-
-img{
-    width: 700px; 
-    height: 200px; 
-    object-fit: cover;
-    object-position: center;
-}
-
 p{
-    font-size: larger;
+    font-size: 2rem;
 }
 
 label{
     font-size: 2em;
 }
 
+footer{
+    padding: 20px 0px;
+}
+
+.portfolio{
+    width: 700px; 
+    height: 500px; 
+}
 
 .btn:hover{
 background-color: gold;
 color: #000;
 }
+
+.col-md-6{
+    margin-bottom: 20px;
+}
+
 
 .head{
     display: flex;
@@ -77,4 +86,11 @@ color: #000;
     height: 300px; 
     object-fit: cover;
     object-position: center;
+}
+
+#root{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100vh;
 }
