@@ -15,10 +15,11 @@ In order to use this project navigate to the deployed app section of the README,
 
 ## Screenshot displaying the deployed app
 
-![Portfolio](./public/)
+![Portfolio](./public/guacutoportfolio.netlify.app_.png)
 
 ## URL to the deployed app
 
+https://guacutoportfolio.netlify.app/
 
 ## Credits
 
