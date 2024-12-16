@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="icons">
     <a href="https://github.com/fabricioGuac" target="_blank"><FaGithub  /></a>
     <a href="https://www.linkedin.com/in/fabricio-guacuto" target="_blank"><FaLinkedin  /></a>
-    <a href="https://stackoverflow.com/questions" target="_blank"><FaStackOverflow  /></a>
+    {/* <a href="https://stackoverflow.com/questions" target="_blank"><FaStackOverflow  /></a> */}
     </div>
 </footer>
     )

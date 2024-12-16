@@ -1,85 +1,130 @@
-import {useState} from 'react';
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+    const [form, setForm] = useState({ name: '', email: '', message: '' });
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccesMessage]  = useState('');
 
-    // Sets state variables for the form inputs
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [validEmail, setValidEmail] = useState(true);
-    const [fullForm, setFullForm] = useState({full: true, target:""});
-
-    // Function to handle the change on the form inputs
     const handleInputChange = (e) => {
-        // Deconstructs the event target to get the id and value from the input field
-        const {id, value} = e.target;
+        const { id, value } = e.target;
+        setForm({ ...form, [id]: value });
 
-        // Utilizes a switch statement to change the value of the targeted input element
-        switch(id) {
-            case 'name':
-                setName(value);
-                break;
-            case 'email':
-                setEmail(value);
-                setValidEmail(true);
-                break;
-            case 'message':
-                setMessage(value);
-                break;
-            default:
-                console.warn('Unexpected input id:', id);
-                break;
-        }
-    }
+        // Clear error message when the user starts typing
+        setErrorMessage('');
+    };
 
-    // Function to handle when the cursor leaves one of the form fields
     const blurHandler = (e) => {
+        const { id, value } = e.target;
 
-        // Deconstructs the event target to get the id and value from the input field
-        const {id, value} = e.target;
+        if (id === 'email' && value) {
+            const isValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(value);
+            if (!isValid) {
+                setErrorMessage('Invalid email address.');
+            }
+        }
+    };
 
-        // Toogles the full boolean if there is a value or not and sets the target to the id
-        setFullForm({full:value, target:id});
-
-        // Leverages regex to ensure the email is valid
-        if(id === 'email') {
-            setValidEmail(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(value))}
-    }
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('I DO NOT WORKK');
-    }
 
+        // Validate form fields
+        if (!form.name || !form.email || !form.message) {
+            setErrorMessage('All fields are required.');
+            return;
+        }
+
+        // Validate email
+        const isEmailValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(form.email);
+        if (!isEmailValid) {
+            setErrorMessage('Invalid email address.');
+            return;
+        }
+
+        // Check EmailJS configuration
+        if (
+            !import.meta.env.VITE_APP_EMAILJS_SERVICE_ID ||
+            !import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID ||
+            !import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        ) {
+            setErrorMessage('Email configuration is missing. Please try again later.');
+            return;
+        }
+
+        try {
+            // Send email using EmailJS
+            await emailjs.send(
+                import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: `${form.name} <${form.email}>`,
+                    to_name: "Fabricio",
+                    to_email: 'guacutofabricio@gmail.com',
+                    message: form.message,
+                },
+                import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+            );
+
+            console.log('Form submitted successfully:', form);
+            setForm({ name: '', email: '', message: '' });
+            setSuccesMessage("Form submitted successfully")
+            setErrorMessage(''); // Clear error message on success
+        } catch (error) {
+            setErrorMessage('An error occurred while sending your message. Please try again.');
+            console.log(error);
+        }
+    };
 
     return (
         <>
-        <h2>Contact</h2>
-        <div className='row'>
-        <form className='col-md-6' onSubmit={handleSubmit}>
-            <div className='form-group'>
-                <label htmlFor="name" >Name:</label>
-                <input type="text" value={name}  onChange={handleInputChange} onBlur={blurHandler} className='form-control' id='name' />
+            <h2>Contact</h2>
+            <div className="row">
+                <form className="col-md-6" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="name">Name:</label>
+                        <input
+                            type="text"
+                            value={form.name}
+                            onChange={handleInputChange}
+                            onBlur={blurHandler}
+                            className="form-control"
+                            id="name"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="email">Email address:</label>
+                        <input
+                            type="text"
+                            value={form.email}
+                            onChange={handleInputChange}
+                            onBlur={blurHandler}
+                            className="form-control"
+                            id="email"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="message">Message:</label>
+                        <textarea
+                            className="form-control"
+                            value={form.message}
+                            onChange={handleInputChange}
+                            id="message"
+                            rows="4"
+                        ></textarea>
+                    </div>
+
+                    {errorMessage && <h3 className="text-danger">{errorMessage}</h3>}
+                    {successMessage && <h3 className="text-success">{successMessage}</h3>}
+
+                    <div className="form-group mt-2">
+                        <button className="btn btn-secondary" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
             </div>
-
-            <div className='form-group'>
-                <label htmlFor="email" >Email address:</label>
-                <input type="text" value={email} onChange={handleInputChange} onBlur={blurHandler} className='form-control' id='email' />
-            </div>
-
-            <div className='form-group'>
-                <label htmlFor="message">Message:</label>
-                <textarea className="form-control" value={message} onChange={handleInputChange} onBlur={blurHandler} id="message"  rows="4"></textarea>
-            </div>
-
-            {validEmail ? "" : <h3 className='text-danger'>Invalid email</h3>}
-            {fullForm.full ? '' : <h3 className='text-danger'>Form must contain {fullForm.target}</h3>}
-
-            <div className="form-group mt-2">
-                    <button className="btn btn-secondary" type="submit" >Submit</button>
-                </div>
-        </form>
-        </div>
         </>
-    )
+    );
 }
