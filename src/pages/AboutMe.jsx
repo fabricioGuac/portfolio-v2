@@ -5,7 +5,7 @@ export default function AboutMe() {
         <div className="container">
         <img src="/linkedInPfp.jpg" alt="photo of me" className="rounded-circle img-fluid profile" />
         </div>
-        <p>Greetings! I'm Fabricio Guacuto, a passionate individual. I pride myself on being a responsible, disciplined, and goal-oriented individual, constantly seeking opportunities to expand my skill set and refine existing talents. With an unwavering commitment to personal and professional development, I eagerly anticipate the chance to learn, grow, and make meaningful contributions. Welcome to my portfolio.</p>
+        <p>Hello, I'm Fabricio Guacuto, a passionate and driven Full Stack Developer. I thrive on solving complex problems, continuously refining my skills, and building scalable applications. With a strong foundation in backend development and cloud technologies, I am eager to contribute to innovative projects and grow as a software engineer. My commitment to discipline, responsibility, and lifelong learning fuels my journey in the tech industry. Welcome to my portfolio!</p>
         </>
     )
 }
